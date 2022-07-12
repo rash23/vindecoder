@@ -1,9 +1,9 @@
-import VinForm from './app/form';
-import Error404 from './app/Error404';
+import { VinForm } from './app/form';
+import { Error404 } from './app/Error404';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LastFiveVins from './app/last-five-results';
 
-function App() {
+export const App = () => {
 	return (
 		<>
 			<Router>
@@ -15,6 +15,4 @@ function App() {
 			</Router>
 		</>
 	);
-}
-
-export default App;
+};

@@ -1,22 +1,19 @@
 import React from 'react';
 import { StyledForm, StyledInput, StyleButton, StyledContainer, StyledError, StyledLink } from '../styles/form.styled';
-import Card from './card';
+import { Card } from './card';
 import { useState } from 'react';
 import { Store } from '../helpers/storage';
 import { request } from '../helpers/request';
 import { isVin } from '../helpers/isinput';
 
-function VinForm() {
+const store = new Store();
+
+export const VinForm = () => {
 	const [inpValue, setInput] = useState('');
-	const [todo, setTodo] = useState([]);
+
 	const [state, setState] = useState();
 	const [error, setError] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
-
-	const list = {
-		id: Date.now().toString(),
-		title: inpValue,
-	};
 
 	const getInfo = async (vin) => {
 		const info = await request(`https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/${vin}?format=json`, {
@@ -35,11 +32,10 @@ function VinForm() {
 			const data = await getInfo(inpValue);
 
 			setState(data);
-			setTodo([...todo, list]);
 			setInput('');
 			setError('');
 
-			new Store().setState('storage', {
+			store.setState('storage', {
 				id: Date.now().toString(),
 				obj: inpValue,
 			});
@@ -64,6 +60,4 @@ function VinForm() {
 			<Card data={state} />
 		</>
 	);
-}
-
-export default VinForm;
+};

@@ -1,6 +1,6 @@
-import { StyledContainer } from '../styles/form.styled';
-import { StyledLi, StyledTitle } from '../styles/results.styled';
-import Card from './card';
+import { StyledContainer, StyleButton } from '../styles/form.styled';
+import { StyledTitle, StyledWrap } from '../styles/results.styled';
+import { Card } from './card';
 import { request } from '../helpers/request';
 import { useState } from 'react';
 import { StyledLink } from '../styles/form.styled';
@@ -8,18 +8,14 @@ import { StyledLink } from '../styles/form.styled';
 const LastFiveVins = () => {
 	const [state, setState] = useState();
 
-	const arr = JSON.parse(sessionStorage.getItem('storage'));
+	const store = JSON.parse(sessionStorage.getItem('storage'));
 
-	let reverseArr = {};
-
-	if (arr) {
-		reverseArr = Object.values(arr).reverse();
-	}
+	let reverseArr = store ? Object.values(store).reverse() : [];
 
 	const decodeVin = async (e) => {
 		e.preventDefault();
 
-		if (e.target.tagName === 'LI') {
+		if (e.target.tagName === 'BUTTON') {
 			const info = await request(`https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/${e.target.textContent}?format=json`, {
 				method: 'GET',
 			});
@@ -32,14 +28,14 @@ const LastFiveVins = () => {
 			<StyledContainer>
 				<StyledLink to={'/vindecoder'}>Go back</StyledLink>
 				<StyledTitle>Last five results:</StyledTitle>
-				<ul onClick={decodeVin}>
+				<StyledWrap onClick={decodeVin}>
 					{Object.entries(reverseArr).map((item, index) => {
 						if (Number(index) <= 4) {
-							return <StyledLi key={index}>{item[1].obj}</StyledLi>;
+							return <StyleButton key={index}>{item[1].obj}</StyleButton>;
 						}
 						return false;
 					})}
-				</ul>
+				</StyledWrap>
 			</StyledContainer>
 			<Card data={state} />
 		</>
