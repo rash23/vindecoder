@@ -8,8 +8,8 @@ export const App = () => {
 		<>
 			<Router>
 				<Routes>
-					<Route exact path="/vindecoder" element={<VinForm />} />
-					<Route path="/results" element={<LastFiveVins />} />
+					<Route path="/vindecoder" element={<VinForm />} />
+					<Route path="vindecoder/results" element={<LastFiveVins />} />
 					<Route path="*" element={<Error404 />} />
 				</Routes>
 			</Router>

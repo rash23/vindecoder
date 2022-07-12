@@ -54,7 +54,7 @@ export const VinForm = () => {
 					<StyleButton type="submit">Decode VIN</StyleButton>
 					<StyledError>{errorMessage}</StyledError>
 				</StyledForm>
-				<StyledLink to={`/results`}>Last results</StyledLink>
+				<StyledLink to={'results'}>Last results</StyledLink>
 			</StyledContainer>
 
 			<Card data={state} />
