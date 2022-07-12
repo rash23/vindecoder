@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/vindecoder/static/css/main.20478cff.css",
-    "main.js": "/vindecoder/static/js/main.56953566.js",
+    "main.js": "/vindecoder/static/js/main.bb1ebcd4.js",
     "index.html": "/vindecoder/index.html",
     "main.20478cff.css.map": "/vindecoder/static/css/main.20478cff.css.map",
-    "main.56953566.js.map": "/vindecoder/static/js/main.56953566.js.map"
+    "main.bb1ebcd4.js.map": "/vindecoder/static/js/main.bb1ebcd4.js.map"
   },
   "entrypoints": [
     "static/css/main.20478cff.css",
-    "static/js/main.56953566.js"
+    "static/js/main.bb1ebcd4.js"
   ]
 }
